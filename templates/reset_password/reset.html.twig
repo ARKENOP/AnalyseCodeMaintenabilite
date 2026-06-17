@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réinitialisez votre mot de passe | Alice CRM{% endblock %}
+
+{% block body %}
+{% form_theme resetForm 'bootstrap_5_layout.html.twig' %}
+    
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1>Réinitialiser votre mot de passe</h1>
+                <div class="button-go-back" alt="Retour page précédente" onclick="window.history.back();">
+            <i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </div>
+    </div>
+
+    <div class="form mt-3 mt-lg-0">
+        {{ form_start(resetForm) }}
+            {{ form_row(resetForm.plainPassword) }}
+            
+        {{ form_end(resetForm) }}
+    </div>
+
+{% endblock %}

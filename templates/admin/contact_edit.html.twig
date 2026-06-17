@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un contact | Alice CRM{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1>Modification d'un contact</h1>
+                <div class="button-go-back" alt="Retour page précédente" onclick="window.history.back();">
+            <i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-around mb-5">
+        
+        <div class="d-flex flex-column">
+            {% if customer %}
+                <h6 class="m-2">Client : </h6>
+                <h5 class="m-2">{{ customer.name|upper }} </h5>
+            {% else %}
+                <h6 class="m-2">Ce contact n'est pas lié à un client </h6>
+            {% endif %}
+        </div>
+
+        <div class="d-flex flex-column">
+            <h6 class="m-2">Contact lié à l'utilisateur : </h6>
+            <h5 class="m-2">{{ user.firstname|capitalize }} {{ user.lastname|upper }} </h5>
+
+        </div>
+            
+    </div>
+
+
+
+    <div class="form mt-3 mt-lg-0">
+
+        {{ form(form) }}
+
+    </div>
+
+{% endblock %}

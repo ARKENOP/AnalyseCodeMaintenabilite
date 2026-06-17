@@ -1,0 +1,11 @@
+<h1>Bonjour !</h1>
+
+<p> Bienvenu sur Alice CRM.</p>
+<p>Merci de confirmer votre Email en cliquant sur le lien suivant : </p>
+
+
+ <a href="{{ signedUrl }}">Confirmer votre email</a>
+
+<p>Ce lien expire dans {{ signatureComponents.expirationMessageKey|trans(signatureComponents.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<p>À tout de suite !!</p>

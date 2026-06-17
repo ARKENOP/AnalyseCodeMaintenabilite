@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte | Alice CRM{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1>Mon compte : A-t-on vraiment d'une page comme celle-ci ? </h1>
+                <div class="button-go-back" alt="Retour page précédente" onclick="window.history.back();">
+            <i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </div>
+                
+    </div>
+
+
+    <p>Bonjour {{ app.user.firstname }}.</p>
+
+
+
+
+
+{% endblock %}

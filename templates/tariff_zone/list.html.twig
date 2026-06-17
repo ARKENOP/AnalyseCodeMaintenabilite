@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zone Tarifaire | Alice CRM{% endblock %}
+
+{% block body %}
+
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1>Zone Tarifaire</h1>
+                <div class="button-go-back" alt="Retour page précédente" onclick="window.history.back();">
+            <i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </div>
+    </div>
+    
+    {% if tariff_zones is not empty %}
+
+        
+        <div class="d-flex justify-content-center justify-content-lg-end">
+            <a href="{{ path('app_tariff_zone_new') }}" class="btn btn-alice">Nouvelle Zone</a>
+        </div>
+       
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    
+                    <th>Nom</th>
+                    <th>Tarif</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for tariff_zone in tariff_zones %}
+                <tr>
+                    
+                    <td>{{ tariff_zone.name }}</td>
+                    <td>{{ tariff_zone.amount }} €</td>
+                    <td>
+                        <div class="d-flex">
+                            <a href="{{ path('app_tariff_zone_show', {'id': tariff_zone.id}) }}" class="btn-fa-action-eye m-0"><i class="fa-solid fa-eye fa-xl"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h4 class="mb-5">Aucune Zone Tarifaire définie</h4>
+            <div class="d-flex flex-column flex-md-row col-12 justify-content-around">
+                <div class="card col-md-5 bgg-alice-light m-2">
+                    <div class="d-flex flex-column align-items-center card-body justify-content-between">
+                        <h6 class="card-title mb-2">Souhaitez-vous ajouter une zone tarifaire ?</h6>
+                        <a href="{{ path('app_tariff_zone_new') }}" class="btn btn-alice">Nouvelle Zone</a>
+                    </div>
+                </div>
+            </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un contrat | Alice CRM{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1>Création d'un contrat</h1>
+        <div class="button-go-back" alt="Retour page précédente" onclick="window.history.back();">
+            <i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </div>
+    </div>
+
+    <h6>Utilisateur : {{ user.firstname }} {{ user.lastname }}</h6>
+
+    <div class="form mt-3 mt-lg-0">
+
+        {{ form_start(form) }}
+
+        {{ form_errors(form) }}
+
+            <div class="mb-3">
+                <label class="form-label required" for="contract_customer">Client</label>
+                <input 
+                    id="contract_customer" 
+                    class="form-control" 
+                    type="text" 
+                    name="contract[customer]" 
+                    placeholder="{{ customer.name }}" 
+                    disabled="true"></input>
+            </div>
+
+        
+        
+        {{ form_row(form.name) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.amountCharged) }}
+        {{ form_row(form.timeCharged) }}
+        {{ form_row(form.amountReal) }}
+        {{ form_row(form.timeReal) }}
+        {{ form_row(form.websiteLink) }}
+        {{ form_row(form.paymentFrequency) }}
+        {{ form_row(form.openArea) }}
+        {{ form_row(form.submit) }}
+
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

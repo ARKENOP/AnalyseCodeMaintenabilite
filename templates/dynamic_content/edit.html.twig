@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la note | Alice CRM{% endblock %}
+
+{% block body %}
+    <div class="d-flex align-items-center justify-content-between mb-3">
+        <h1>Rédaction d'une note</h1>
+                <div class="button-go-back" alt="Retour page précédente" onclick="window.history.back();">
+            <i class="fa-sharp fa-solid fa-circle-chevron-left fa-2xl"></i>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        {{ form_start(form) }}
+        {{ form_row(form.content) }}
+        {{ form_end(form) }}
+
+
+    </div>
+
+{% endblock %}

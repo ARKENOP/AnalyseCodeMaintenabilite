@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+    
+
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.family) }}
+        
+        {% if app.user.roles[0] == "ROLE_ADMIN" %}
+            {{ form_row(form.user) }}  
+        {% endif %}
+        
+        {% if form.fileName is defined %}
+            {{ form_row(form.fileName) }}
+        {% endif %}
+
+        <div class="d-flex justify-content-around">
+            <button class="btn btn-alice-form">{{ button_label|default('Envoyer') }}</button>
+        </div>
+
+{{ form_end(form) }}

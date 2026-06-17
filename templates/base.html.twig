@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Un CRM pour la gestion client">
+        <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
+        <link rel="stylesheet" href="{{ asset('assets/css/sidebars.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/fontawesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/brands.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/solid.css') }}">
+
+        {% block cssEditor %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+
+        <title>{% block title %}Alice CRM{% endblock %}</title>
+
+    </head>
+
+<body id="body">
+
+{# TODO : Revoir avec Antoine pour le CSS de CK Editor qui prend le pas sur la page show client .... le dossier est en non suivi : public/bundles/fosckeditor et ressort à chaque instal de CK Editor #}
+
+    
+    {% include 'includes/nav.html.twig' %}
+
+
+    
+
+    <div class="container-fluid">
+        <div class="row">
+
+            {% include 'includes/sideBar.html.twig' %}
+
+            <main class="col-lg-10 ms-auto ms-md-20 mt-3 mt-lg-0">
+
+                {% include 'includes/_flashes.html.twig' %}
+
+                {% block body %}{% endblock %}
+                
+            </main>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebars.js') }}"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+
+    {# CKEditor #}
+    {% block javascriptEditor %}{% endblock %}
+
+
+
+
+
+    {# Open source icons #}
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+    crossorigin="anonymous"></script>
+
+    {# Gestion des graphiques  #}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
