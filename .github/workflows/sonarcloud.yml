@@ -1,0 +1,35 @@
+name: SonarCloud analysis
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # À ajuster selon votre version de PHP
+          coverage: pcov # Pour la couverture de code
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run tests and generate coverage report
+        run: bin/phpunit --coverage-clover var/coverage.xml
+        continue-on-error: true # Permet à SonarCloud d'analyser même si des tests échouent
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
