@@ -22,7 +22,10 @@ jobs:
           coverage: pcov # Pour la couverture de code
 
       - name: Create .env file
-        run: cp .env.example .env || touch .env
+        run: |
+          cp .env.example .env || touch .env
+          echo 'APP_ENV=test' >> .env
+          echo 'DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"' >> .env
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
