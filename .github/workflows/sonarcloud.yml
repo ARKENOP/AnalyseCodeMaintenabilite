@@ -21,6 +21,9 @@ jobs:
           php-version: '8.2' # À ajuster selon votre version de PHP
           coverage: pcov # Pour la couverture de code
 
+      - name: Create .env file
+        run: cp .env.example .env || touch .env
+
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
