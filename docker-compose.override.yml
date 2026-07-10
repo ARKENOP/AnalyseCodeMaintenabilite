@@ -1,4 +1,3 @@
-version: '3'
 
 services:
 ###> doctrine/doctrine-bundle ###
@@ -9,6 +8,20 @@ services:
 
 ###> symfony/mailer ###
   mailer:
-    image: schickling/mailcatcher
+    image: sj26/mailcatcher
     ports: ["1025", "1080"]
 ###< symfony/mailer ###
+
+###> app ###
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+###< app ###
+
