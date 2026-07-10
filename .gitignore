@@ -22,6 +22,7 @@
 
 ### Custom Settings ###
 .env
+.idea
 uploads
 /analyses
 /out
